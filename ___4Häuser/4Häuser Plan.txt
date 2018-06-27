@@ -1,0 +1,12 @@
+Objekte:
+-Händler(interface)
+-5 Orte(interface) mit jeweils 4 Gebäuden
+spieler:
+-Spieler der laufen kann
+-Interface
+Interfaces:
+-Händler(5Seiten/mit 4 objekten/Buttons zum an aus machen der Seiten/kosten und stufen der Objekte)
+-Orte(4 objekte/einkommen und stufen/Button zum einsammeln der Ressourcen)
+-Spieler(Tasten zum Interagieren der Orte/Ressourcen auf Lager/Minimap)
+Programme:
+-Ideen

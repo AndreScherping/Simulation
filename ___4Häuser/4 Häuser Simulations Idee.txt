@@ -1,0 +1,60 @@
+Händler:
+:kosten
+-checkt ob spieler genug für kauf hat indem es sich wert von objekt holt
+-wenn genug aktiviert bauen und zieht spieler wert ab und verbesserung
+-int SpielerRessourcen= spielerRessourcen - int kosten
+:bauen
+-bekommt einen int und string
+-string ist farbe und int haus nummer
+-dieses Hause wird dann aktiviert(true) und das alte deaktiviert(false)
+-gebäude Wert Stufe wird neu gemacht
+
+:interface
+-muss bei aufrufen die Maus erscheinen lassen und bei verlassen wieder weg gehen
+-zeigt mehrere Seiten die man mit hilfe von button an und aus macht wodurch es so aussieht als wenn man blätert
+-auf jeder Seite sind Häuser plus kosten gezeigt
+-jeweils die public int der Häuser
+-durch drücken auf kaufen wird verbesserung kosten und bauen aufgerufen
+-preis erhöht sich und hausanzahl wird um eins gesteigert
+
+
+
+Spieler:
+:Inventar
+-int lagern ressourcen für händler
+
+:einsammeln
+-bei kolision mit Ort kann button drücken zum transferieren der Ressorce ins Inventar wird dann plus gerechnet mit der Momentanen anzahl
+:bewegen
+/
+
+:Interface
+-zeigt die Ressourcen und die einnahmen
+-minimap
+
+SammelOrt:
+:Lager
+-public int für ressorce
+:Arbeiter
+-bei kolision mit spieler durch button zeigt interface
+-dieses zeigt alle Häuser arten und wie viele Arbeiter du hast 
+-dort kannst du Arbeiter einem Objekt zuweisen oder abziehen
+-teilt objekt arbeiter (mal*) int zu 
+:Interface
+-zeigt Arbeiter
+-zeigt alle Häuser Arten und zugeteilte Arbeiter und sekündliche Einnahmen
+-durch buttons hinter haus namen möglich Arbeiter zahl zu addieren oder subtrahieren
+-geht nur solange mind ein haus da ist
+
+Gebäude:
+:Werte
+-int für stufe und den jeweiligen stufen bonus der rechnung 
+-Stufen bonus wird intern mit der stufe herausbekommen
+-in kosten = stufe * wert usw...
+:generieren
+-2 int einer macht plus(+) der andere mal(*)
+-rechnet jeder Sekunde ressorce des Gebäudes
+-Rechnung ist grundbetrag plus stufe mal arbeiter- gewisse Zahl*mal arbeiter
+-transferiert diese dann ins Lager
+:Aussehen
+-hat mehrer Aussehen die an und aus gemacht werden können

@@ -1,0 +1,6 @@
+simple KI.
+prozedurale Welt
+freie spielperspektive(first person, third person, top down)
+ereignisse
+verhalten von objekten mit endlichen Automaten abbilden
+hauptmenü, audioElemente
