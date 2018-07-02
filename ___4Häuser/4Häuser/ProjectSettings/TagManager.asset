@@ -10,6 +10,12 @@ TagManager:
   - steinmetz
   - fabrik
   - labor
+  - Farm
+  - Tower
+  - FarmHouse
+  - Grass
+  - House
+  - Musicbox
   layers:
   - Default
   - TransparentFX
