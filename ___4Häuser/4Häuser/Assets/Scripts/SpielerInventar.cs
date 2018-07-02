@@ -7,17 +7,15 @@ public class SpielerInventar : MonoBehaviour {
 
     public GameObject player;
 
-    public int spielerGeld;
-    public int spielerHolz;
-    public int spielerStein;
-    public int spielerMetal;
-    public int spielerÖl;
+    public int spielerGeld =100000;
+    public int spielerHolz= 100000;
+    public int spielerStein=100000;
+    public int spielerMetal=100000;
 
     public Text spielerGeldText;
     public Text spielerHolzText;
     public Text spielerSteinText;
     public Text spielerMetalText;
-    public Text spielerÖlText;
     public Text AktivierungsText;
 
     private void Start()
@@ -32,7 +30,6 @@ public class SpielerInventar : MonoBehaviour {
         spielerHolzText.text = spielerHolz.ToString();
         spielerSteinText.text = spielerStein.ToString();
         spielerMetalText.text = spielerMetal.ToString();
-        spielerÖlText.text = spielerÖl.ToString();
     }
 
     private void OnTriggerStay(Collider other)
@@ -60,12 +57,7 @@ public class SpielerInventar : MonoBehaviour {
             {
                 spielerMetal = spielerMetal + player.GetComponent<GeldProduzieren>().Metal;
                 player.GetComponent<GeldProduzieren>().Metal = 0;
-            }
-            if (other.CompareTag("labor"))
-            {
-                spielerÖl = spielerÖl + player.GetComponent<GeldProduzieren>().Öl;
-                player.GetComponent<GeldProduzieren>().Öl = 0;
-            }
+            }  
         }
     }
 

@@ -9,34 +9,52 @@ public class GeldProduzieren : MonoBehaviour {
     public Text HolzText;
     public Text SteinText;
     public Text MetalText;
-    public Text ÖlText;
 
     public int Geld;
     public int Holz;
     public int Stein;
     public int Metal;
-    public int Öl;
     public int zusatzGeld;
     public int zusatzHolz;
     public int zusatzStein;
     public int zusatzMetal;
-    public int zusatzÖl;
-    public int erweiterungenGeld=1;
+    public int erweiterungenGeld=0;
     public int erweiterungenHolz = 0;
     public int erweiterungenStein = 0;
     public int erweiterungenMetal = 0;
-    public int erweiterungenÖl = 0;
+    public int ArbeiterGeld;
+    public int ArbeiterHolz;
+    public int ArbeiterStein;
+    public int ArbeiterMetal;
 
     public Text verbesserungsText;
 
+    private BuildBuilding buildBuilding;
+    private UpgradeBuilding upgradeFarmHouse;
+    private UpgradeBuilding upgradeFarm;
+    private UpgradeBuilding upgradeHouse;
+    private UpgradeBuilding upgradeTower;
+    [SerializeField]
+    private GameObject farmHouse;
+    [SerializeField]
+    private GameObject farm;
+    [SerializeField]
+    private GameObject house;
+    [SerializeField]
+    private GameObject tower;
+
     private void Start()
     {
+        buildBuilding = GetComponent<BuildBuilding>();
+        upgradeFarmHouse = farmHouse.GetComponent<UpgradeBuilding>();
+        upgradeFarm = farm.GetComponent<UpgradeBuilding>();
+        upgradeHouse = house.GetComponent<UpgradeBuilding>();
+        upgradeTower = tower.GetComponent<UpgradeBuilding>();
 
         StartCoroutine(Drucken());
         StartCoroutine(Fällen());
         StartCoroutine(Abbauen());
         StartCoroutine(Schmieden());
-        StartCoroutine(Bohren());
 
     }
 
@@ -46,65 +64,114 @@ public class GeldProduzieren : MonoBehaviour {
         HolzText.text = Holz.ToString();
         SteinText.text = Stein.ToString();
         MetalText.text = Metal.ToString();
-        ÖlText.text = Öl.ToString();
     }
 
     public void Zusätze(int stoff)
     {
         if (stoff == 0)
+        {
+            buildBuilding.Build(stoff);
             zusatzGeld++;
+        }
         else if (stoff == 1)
+        {
+            buildBuilding.Build(stoff);
             zusatzHolz++;
+        }
         else if (stoff == 2)
+        {
+            buildBuilding.Build(stoff);
             zusatzStein++;
+        }
         else if (stoff == 3)
+        {
+            buildBuilding.Build(stoff);
             zusatzMetal++;
-        else if (stoff == 4)
-            zusatzÖl++;
+        }
     }
 
     public void Erweiterungen(int stoff)
     {
         if (stoff == 0)
-            erweiterungenGeld++;
+        {
+            upgradeFarmHouse.Upgrade(stoff);
+            if (erweiterungenGeld == 7)
+            {
+                erweiterungenGeld = 0;
+                Zusätze(stoff);
+            }
+        }
         else if (stoff == 1)
-            erweiterungenHolz++;
+        {
+            upgradeFarm.Upgrade(stoff);
+            if (erweiterungenHolz == 7)
+            {
+                erweiterungenHolz = 0;
+                Zusätze(stoff);
+            }
+        }
         else if (stoff == 2)
-            erweiterungenStein++;
+        {
+            upgradeHouse.Upgrade(stoff);
+            if (erweiterungenStein == 7)
+            {
+                erweiterungenStein = 0;
+                Zusätze(stoff);
+            }
+        }
         else if (stoff == 3)
-            erweiterungenMetal++;
-        else if (stoff == 4)
-            erweiterungenÖl++;
+        {
+            upgradeTower.Upgrade(stoff);
+            if (erweiterungenMetal == 7)
+            {
+                erweiterungenMetal = 0;
+                Zusätze(stoff);
+            }
+        }
     }
 
-    IEnumerator Drucken()
+    public void ArbeiterKaufen(int stoff)
     {
-        Geld = Geld + zusatzGeld*erweiterungenGeld;
-        yield return new WaitForSeconds(1);
-        StartCoroutine(Drucken());
+        if (stoff == 0)
+        {
+            ArbeiterGeld++;
+        }
+        else if (stoff == 1)
+        {
+            ArbeiterHolz++;
+        }
+        else if (stoff == 2)
+        {
+            ArbeiterStein++;
+        }
+        else if (stoff == 3)
+        {
+            ArbeiterMetal++;
+        }
     }
-    IEnumerator Fällen()
-    {
-        Holz = Holz + zusatzHolz * erweiterungenHolz;
-        yield return new WaitForSeconds(1);
-        StartCoroutine(Fällen());
-    }
-    IEnumerator Abbauen()
-    {
-        Stein = Stein + zusatzStein * erweiterungenStein;
-        yield return new WaitForSeconds(1);
-        StartCoroutine(Abbauen());
-    }
-    IEnumerator Schmieden()
-    {
-        Metal = Metal + zusatzMetal * erweiterungenMetal;
-        yield return new WaitForSeconds(1);
-        StartCoroutine(Schmieden());
-    }
-    IEnumerator Bohren()
-    {
-        Öl = Öl + zusatzÖl * erweiterungenÖl;
-        yield return new WaitForSeconds(1);
-        StartCoroutine(Bohren());
-    }
-}
+
+            IEnumerator Drucken()
+            {
+                Geld = Geld + zusatzGeld * erweiterungenGeld * ArbeiterGeld;
+                yield return new WaitForSeconds(1);
+                StartCoroutine(Drucken());
+            }
+            IEnumerator Fällen()
+            {
+                Holz = Holz + zusatzHolz * erweiterungenHolz * ArbeiterHolz;
+                yield return new WaitForSeconds(1);
+                StartCoroutine(Fällen());
+            }
+            IEnumerator Abbauen()
+            {
+                Stein = Stein + zusatzStein * erweiterungenStein * ArbeiterStein;
+                yield return new WaitForSeconds(1);
+                StartCoroutine(Abbauen());
+            }
+            IEnumerator Schmieden()
+            {
+                Metal = Metal + zusatzMetal * erweiterungenMetal * ArbeiterMetal;
+                yield return new WaitForSeconds(1);
+                StartCoroutine(Schmieden());
+            }
+        }

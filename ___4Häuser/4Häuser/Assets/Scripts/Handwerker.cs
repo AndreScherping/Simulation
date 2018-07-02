@@ -15,7 +15,7 @@ public class Handwerker : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("player"))
+        if (other.CompareTag("Player"))
         {
             laden.SetActive(true);
         }
@@ -23,7 +23,7 @@ public class Handwerker : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("player"))
+        if (other.CompareTag("Player"))
         {
             laden.SetActive(false);
         }
