@@ -7,10 +7,10 @@ public class SpielerInventar : MonoBehaviour {
 
     public GameObject player;
 
-    public int spielerGeld =100000;
-    public int spielerHolz= 100000;
-    public int spielerStein=100000;
-    public int spielerMetal=100000;
+    public int spielerGeld;
+    public int spielerHolz;
+    public int spielerStein;
+    public int spielerMetal;
 
     public Text spielerGeldText;
     public Text spielerHolzText;
@@ -26,15 +26,31 @@ public class SpielerInventar : MonoBehaviour {
     private void Update()
     {
          
-        spielerGeldText.text = spielerGeld.ToString();
-        spielerHolzText.text = spielerHolz.ToString();
-        spielerSteinText.text = spielerStein.ToString();
-        spielerMetalText.text = spielerMetal.ToString();
+        spielerGeldText.text = "Geld: " + spielerGeld.ToString();
+        spielerHolzText.text = "Holz: " + spielerHolz.ToString();
+        spielerSteinText.text = "Stein: " + spielerStein.ToString();
+        spielerMetalText.text = "Metall: " + spielerMetal.ToString();
     }
 
     private void OnTriggerStay(Collider other)
     {
-        AktivierungsText.text = "Press E";
+        if (other.CompareTag("bank"))
+        {
+            AktivierungsText.text = "Drücke E um das Geld einzusammeln.";
+        }
+        if (other.CompareTag("holzfäller"))
+        {
+            AktivierungsText.text = "Drücke E um das Holz einzusammeln";
+        }
+        if (other.CompareTag("steinmetz"))
+        {
+            AktivierungsText.text = "Drücke E um den Stein einzusammeln";
+        }
+        if (other.CompareTag("fabrik"))
+        {
+            AktivierungsText.text = "Drücke E um das Metall einzusammeln";
+        }
+        
         if (Input.GetKeyDown("e"))
         {
 

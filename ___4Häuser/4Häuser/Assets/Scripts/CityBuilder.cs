@@ -34,7 +34,6 @@ public class CityBuilder : MonoBehaviour
                 mapgrid[x, h] = -1;
             }
             x += 3;
-            //x += Random.Range(5, 10);
             if (x >= mapWidth)
                 break;
         }
@@ -54,7 +53,6 @@ public class CityBuilder : MonoBehaviour
                 }
             }
             z += 4;
-            //z += Random.Range(3, 20);
             if (z >= mapHeight)
                 break;
         }

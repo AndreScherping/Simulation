@@ -16,12 +16,11 @@ public class LadenSwap : MonoBehaviour {
     public void Umdrehen()
     {
         seite = seite + 1;
-        Debug.Log("kk");
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("player")&&imLaden==true)
+        if (other.CompareTag("player") && imLaden == true)
         {
             Time.timeScale = 0;
         }
