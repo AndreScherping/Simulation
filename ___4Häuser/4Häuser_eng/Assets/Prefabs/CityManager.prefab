@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1465064082355894}
+  m_IsPrefabParent: 1
+--- !u!1 &1465064082355894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4749968271222482}
+  - component: {fileID: 114340577149405622}
+  m_Layer: 0
+  m_Name: CityManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4749968271222482
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1465064082355894}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 1, z: 100}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114340577149405622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1465064082355894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a309f21eab5a91f42b736eb1fb9a8d43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Buildings:
+  - {fileID: 1814833712648868, guid: f2697fafb6ac24f4788d6ad6ef1c6826, type: 2}
+  - {fileID: 1984242568303918, guid: 50e6406085908e5439806e01e69634b2, type: 2}
+  - {fileID: 1422916307251748, guid: 03d7c12da97c961468011367a87fcb8c, type: 2}
+  - {fileID: 1949222741341848, guid: bbd4f224303d77e4f97478fefe84af32, type: 2}
+  - {fileID: 1160941027276022, guid: 300032a41c808774a87655efa553787e, type: 2}
+  XStreets: {fileID: 1567901896141214, guid: c7facb657de7fe0479ad20d331586bc1, type: 2}
+  ZStreets: {fileID: 1566523999021634, guid: 5cc865cc3963fa741aa995d61895517a, type: 2}
+  Crossroads: {fileID: 1727663331892444, guid: 46bac12e90e3f794a96c6e24370ff3df, type: 2}
+  mapWidth: 20
+  mapHeight: 20
